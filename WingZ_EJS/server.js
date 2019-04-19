@@ -10,6 +10,9 @@ var app = express();
 var bodyParser = require('body-parser'); //Ensure our body-parser tool has been added
 app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+const router = express.Router();
+
+
 
 //Create Database Connection
 var pgp = require('pg-promise')();
@@ -33,7 +36,7 @@ const dbConfig = {
 var db = pgp(dbConfig);
 
 // set the view engine to ejs
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 app.get('/',function(req,res) {
@@ -50,8 +53,14 @@ app.get('/create_account', function(req,res) {
   });
 });
 
+/*
+app.get('/bird_posting', function(req, res) {
+    res.sendFile(path.join(__dirname + '/BirdReporting.html'));
+});
+*/
+
 app.get('/bird_posting', function(req,res) {
-  res.render('bird_posting', {
+  res.render('BirdReporting.html', {
     my_title: "Registration Page"
   });
 });
