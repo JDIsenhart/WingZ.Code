@@ -9,17 +9,6 @@
         .container{
             max-width: 75%;
             background: whitesmoke;
-
-        }
-        ul{
-            background-color: #CCCCFF;
-        }
-        li a{
-            color: whitesmoke;   
-        }
-        
-        li a:hover(
-            color:black
         }
     </style>
 
@@ -28,9 +17,9 @@
 </head>
 <body>
 
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg">
+
+<body onload = "populateHTML()">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-#CCCCFF">
   <a class="navbar-brand" href="birdfeed.html">
   <img class="rounded-circle" src="../resources/img/alot_of_birds.jpg" alt="" width="30" height="30">
   </a>
@@ -58,7 +47,7 @@
 <div class = "jumbotron text-center" style="color:#CCCCFF">
     <h2 class = "display-4">Bird Feed</h2>
 </div>
-
+<!--
 <div class = "container">
     <div class = "text-center"><font size = "8"> John saw a hawk.</font></div>
  </div>
@@ -68,13 +57,12 @@
 <div class = "container">
     <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
  </div>
-
+-->
+<!--<button onclick="populateHTML()">Click me</button>-->
 
 <div id="feed">
 </div>
 
-<div class = "container">
-    <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
 
    <!-- <?php
 $db = pg_connect("host=localhost port=5432 dbname=w3r user=w3r_admin password=admin123");
