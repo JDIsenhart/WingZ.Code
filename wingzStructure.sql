@@ -1,6 +1,3 @@
---
--- PostgreSQL database dump
---
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,13 +21,13 @@ SET default_with_oids = false;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS userLogin;
 DROP TABLE IF EXISTS userdata;
-DROP TABLE IF EXISTS usertexts
+DROP TABLE IF EXISTS usertexts;
 DROP TABLE IF EXISTS birds;
 DROP TABLE IF EXISTS birdsightings;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -42,7 +39,7 @@ CREATE TABLE users (
 );
 
 --
--- Name: userlogin; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: userlogin; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE userlogin (
@@ -52,7 +49,7 @@ CREATE TABLE userlogin (
 
 
 --
--- Name: userdata; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: userdata; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE userdata (
@@ -62,7 +59,7 @@ CREATE TABLE userdata (
 );
 
 --
--- Name: usertexts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: usertexts; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE usertexts (
@@ -74,7 +71,7 @@ CREATE TABLE usertexts (
 
 
 --
--- Name: birds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: birds; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE birds (
@@ -87,19 +84,14 @@ CREATE TABLE birds (
 
 
 --
--- Name: birdsightings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: birdsightings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE birdsightings (
     sighting_number serial PRIMARY KEY,
     username character varying(25) NOT NULL,
-    bird_id interger NOT NULL,
+    bird_id integer NOT NULL,
     sight_time character varying(90),
     location character varying(90) NOT NULL,
     bird_count integer
 );
-
-
---
--- Data for Name: employees; Type: TABLE DATA; Schema: public; Owner: -
---
