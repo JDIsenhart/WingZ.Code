@@ -9,6 +9,17 @@
         .container{
             max-width: 75%;
             background: whitesmoke;
+
+        }
+        ul{
+            background-color: #CCCCFF;
+        }
+        li a{
+            color: whitesmoke;   
+        }
+        
+        li a:hover(
+            color:black
         }
     </style>
 
@@ -17,10 +28,10 @@
 </head>
 <body>
 
-
-<body onload = "populateHTML()">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-#CCCCFF">
-  <a class="navbar-brand" href="birdfeed.html">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="home">
   <img class="rounded-circle" src="../resources/img/alot_of_birds.jpg" alt="" width="30" height="30">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,25 +40,25 @@
   <div class="collapse navbar-collapse" id="navbarText">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-    <a class="nav-link" href="birdfeed.html">Feed</a>
+    <a class="nav-link" href="home">Feed</a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="birdFacts.html">Bird Facts <span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="facts">Bird Facts <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="BirdReporting.html">Bird Reporting</a>
+    <a class="nav-link" href="report">Bird Reporting</a>
     </li>
   </ul>
   <div class="form-inline my-2 my-lg-0">
     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
   </div>
   </div>
-</nav>
+  </nav>
 
 <div class = "jumbotron text-center" style="color:#CCCCFF">
     <h2 class = "display-4">Bird Feed</h2>
 </div>
-<!--
+
 <div class = "container">
     <div class = "text-center"><font size = "8"> John saw a hawk.</font></div>
  </div>
@@ -57,12 +68,13 @@
 <div class = "container">
     <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
  </div>
--->
-<!--<button onclick="populateHTML()">Click me</button>-->
+
 
 <div id="feed">
 </div>
 
+<div class = "container">
+    <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
 
    <!-- <?php
 $db = pg_connect("host=localhost port=5432 dbname=w3r user=w3r_admin password=admin123");
