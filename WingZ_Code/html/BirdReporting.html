@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+    <style>
+        body{
+            background-color: #CCCCFF;
+        }
+    </style>    
+</head>
+<body>
+    
+<div class = "jumbotron text-center" style="color:#CCCCFF">
+    <h2 class = "display-4">Bird Report</h2>
+</div>
+<blockquote class="blockquote text-center" style = "color:white">This is where you can report a bird you have seen. Have you seen a bird today?</blockquote>
+
+<form action="/action_page.ejs">
+	<h3 class= "text-center" style = "color: white">What Type of Bird is it?</h3>
+	<p class = "text-center" style = "color: white">If you are not sure what type of bird it is, check out our Bird Facts Page!</p>
+	<p class = "text-center">Link</p>
+    <div align = "center">
+	<select name="cars">
+		<option value="NULL">Birds</option>
+		<option value="hawk">Hawk</option>
+		<option value="eagle">Eagle</option>
+		<option value="Other">Other</option>
+	</select>
+    </div>
+	<h3 class ="text-center" style ="color: white">Where did you see it?</h3>
+
+    <div class = "text-center" style = "color: white">Location:</div>
+    <div align = "center">
+    <br>
+	<input type="text" name="Location"> <!-- Right now it is just text field, could change to use gps location. -->
+	<br>
+    <div style = "color: white">    
+	Other information:<br>
+	(i.e is it in a tree, did it fly overhead, is it sleeping)<br>
+        </div>
+	<input type="text" name="Other">
+
+	<br><br>
+       
+
+
+
+  <input type="submit">
+        </div>
+</form>
+
+</body>
+</html>
