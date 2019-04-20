@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+
+<div class="card-body mx-auto">
+	<form class="form" action="/bird_facts/bird_info" method="get">
+		<select class="custom-select" name="fact_choice" onchange="this.form.submit()">
+			<option selected>Select Bird</option>
+			<option>Load in more Birds</option>
+		</select>
+	</form>
+</div>
+
+<div class="col-8">
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<th>Type</th>
+				<td>
+					Load Bird Type Here
+				</td>
+			</tr>
+			<tr>
+				<th>Image</th>
+				<td>
+					Load Bird Image Here
+				</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>
+					Load Bird Description Here
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</html>
