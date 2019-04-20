@@ -13,3 +13,11 @@ function viewStudentStats(id, toggle)
 		document.getElementById(id).style.height = "auto";
 	}
 }
+
+function  encryptPass(){
+  document.getElementById('password').innerHTML = window.btoa('password');
+}
+
+function decryptPass(){
+  document.getElementById('password').innerHTML = window.atob('password');
+}
