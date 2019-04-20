@@ -78,8 +78,8 @@ CREATE TABLE birds (
     bird_id serial PRIMARY KEY,
     common_name character varying(25) NOT NULL,
     scientific_name character varying(60) NOT NULL,
-    bird_description character varying(90),
-    bird_image character varying(120)
+    bird_description character varying(180),
+    bird_image character varying(180)
 );
 
 
