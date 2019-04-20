@@ -12,7 +12,7 @@ function loadBirdReports(){
 
 function populateHTML(){
     console.log("Hello World");
-    
+
     for(var i = 0; i < 10; i++){
         document.getElementById("feed").innerHTML += '<div class = "container">' +
             '        <p class = "text-center"><font size = "8">John saw a really cool bird near starbucks that you should go check out.</p>' +

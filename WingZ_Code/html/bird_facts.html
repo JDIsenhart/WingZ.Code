@@ -9,19 +9,8 @@
         .container{
             max-width: 75%;
             background: whitesmoke;
-
         }
     </style>
-
-    <script src="../resources/js/scripts.js">
-    </script>
-</head>
-<body>
-
-<div class = "jumbotron text-center" style="color:#CCCCFF" onclick= "populateHTML()">
-    <h2 class = "display-4">Bird Feed</h2>
-</div>
-
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,36 +38,38 @@
   </div>
 </nav>
 
-<div class = "jumbotron text-center" style="color:#CCCCFF">
-    <h2 class = "display-4">Bird Feed</h2>
-</div>
+	<div class="card-body mx-auto">
+		<form class="form" action="/bird_facts/bird_info" method="get">
+			<select class="custom-select" name="fact_choice" onchange="this.form.submit()">
+				<option selected>Select Bird</option>
+				<option>Load in more Birds</option>
+			</select>
+		</form>
+	</div>
 
-<div class = "container">
-    <div class = "text-center"><font size = "8"> John saw a hawk.</font></div>
- </div>
-
-<br>
-
-<div class = "container">
-    <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
- </div>
-
-
-<div id="feed">
-</div>
-
-<div class = "container">
-    <div class = "text-center"><font size = "8"> John saw a really cool bird near starbucks that you should go check out.</font></div>
-
-   <!-- <?php
-$db = pg_connect("host=localhost port=5432 dbname=w3r user=w3r_admin password=admin123");
-$result = pg_query($db,"SELECT * FROM actor");
-echo "<table>";
-while($row=pg_fetch_assoc($result)){echo "<tr>";
-echo "<td align='center' width='200'>" . $row['actor_id'] . "</td>";
-echo "<td align='center' width='200'>" . $row['first_name'] . "</td>";
-echo "<td align='center' width='200'>" . $row['last_name'] . "</td>";
-echo "<td align='center' width='200'>" . $row['last_update'] . "</td>";
-echo "</tr>";}echo "</table>";?> -->
-
- </div>
+	<div class="col-8">
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>Type</th>
+					<td>
+						Load Bird Type Here
+					</td>
+				</tr>
+				<tr>
+					<th>Image</th>
+					<td>
+						Load Bird Image Here
+					</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>
+						Load Bird Description Here
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	</body>
+</html>
