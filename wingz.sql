@@ -36,9 +36,9 @@ DROP TABLE IF EXISTS birdsightings;
 CREATE TABLE users (
     username character varying(25) NOT NULL,
     email_address character varying(45) NOT NULL,
-    first_name character varying(30) NOT NULL,
-    last_name chrarcter varying(30),
-    description character varying(60)
+    university character varying(30) NOT NULL,
+    name character varying(30) NOT NULL,
+    favorite_bird character varying(45)
 );
 
 --
