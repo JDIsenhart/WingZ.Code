@@ -20,6 +20,10 @@ router.get('/report',function(req,res){
   res.sendFile(path.join(__dirname+'/html/BirdReporting.html'));
 });
 
+router.get('/facts', function(req,res){
+	res.sendFile(path.join(__dirname+'/html/birdFacts.html'));
+});
+
 //add the router
 app.use('/', router);
 app.listen(process.env.port || 3000);
