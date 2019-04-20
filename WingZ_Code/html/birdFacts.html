@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta name="description" content="">
+    	<title>Bird Facts!!</title>
+	
+		<link rel='icon' href='../resources/img/favicon.ico' type='image/x-icon'/>
+    	<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="card-body mx-auto">
+			<form class="form" action="/bird_facts/bird_info" method="get">
+				<select class="custom-select" name="fact_choice" onchange="this.form.submit()">
+					<option selected>Select Bird</option>
+					<option>Load in more Birds</option>
+				</select>
+			</form>
+		</div>
+
+		<div class="col-8">
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th>Type</th>
+						<td>
+							Load Bird Type Here
+						</td>
+					</tr>
+					<tr>
+						<th>Image</th>
+						<td>
+							Load Bird Image Here
+						</td>
+					</tr>
+					<tr>
+						<th>Description</th>
+						<td>
+
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+</html>
