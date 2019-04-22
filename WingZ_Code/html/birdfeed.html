@@ -29,6 +29,32 @@
             text-decoration: underline;
 
         }
+        .jumbotron button{
+            height: 50px;
+            width: 160px;
+            padding: 5px;
+            background: #CCCCFF;
+            color: #404080;
+            font-size: 25px;
+            border-color: #404080;
+            border-width: 1.5px;
+
+        }
+        #Fatcs{
+            width: 130px;
+        }
+
+        .jumbotron {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+        }
+        .jumbotron h2{
+            margin-left: 3%;
+
+        }
+
     </style>
 
     <script src="../resources/js/scripts.js">
@@ -64,7 +90,9 @@
   </nav>
 
 <div class = "jumbotron text-center">
+    <a href="facts"><button class="btn btn-outline-dark my-2 my-sm-0" id="Fatcs">Bird Facts</button></a>
     <h2 class = "display-4">Bird Feed</h2>
+    <a href="report"><button class="btn btn-outline-dark my-2 my-sm-0" id="newReport">Report Bird</button></a>
 </div>
 
 <div class = "container">
