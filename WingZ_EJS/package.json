@@ -1,16 +1,17 @@
 {
-    "name": "htmlRender",
-    "version": "1.0.0",
-    "descripription": "",
-    "main": "server.js",
-    "scripts": {
-	"test": "echo "Error: no test specified" &amp;&amp; exit 1"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-	"express": "^4.16.4"
-	}
+  "name": "ejs-project",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "pg-promise": "^8.5.1"
+  }
 }
-

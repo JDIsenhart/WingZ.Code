@@ -1,7 +1,7 @@
 INSERT INTO users(username, name, email_address, university, favorite_bird) VALUES('JTheIsenhart', 'JD Isenhart', 'james.isenhart@colorado.edu', 'University of Colorado Boulder', 'EAGLE');
-INSERT INTO userlogin VALUES('JtheIsenhart', 'TmVyZHk0QmlyZHk=');
+INSERT INTO userlogin VALUES('JtheIsenhart', '72f75591aee8c47a0f95177b9e13e3ff');
 
-INSERT INTO userlogin VALUES('wingzTest', 'YWRtaW4=');
+INSERT INTO userlogin VALUES('wingzTest', 'a7d046ad3a55a9467bb7dc4dfe6eae16');
 INSERT INTO users VALUES ('wingzTest', 'test@cu.edu', 'University of Colorado Boulder', 'Wingz Testing', 'Emu');
 
 INSERT INTO birds VALUES (DEFAULT, 'Canada Goose', 'Branta canadensis', 'A large wild goose species with a black head and neck, white cheeks, and a brown body. Natice to arctic and temperate regions of North America.', 'https://upload.wikimedia.org/wikipedia/commons/4/40/Canada_goose_on_Seedskadee_NWR_%2827826185489%29.jpg');
