@@ -1,15 +1,19 @@
-function logInAndOut(id, toggle)
+function confirmPSWD() {
 
-function viewStudentStats(id, toggle)
-{
-	if(toggle == 0)
-	{
-		document.getElementById(id).style.visibility = "hidden";
-		document.getElementById(id).style.height = "0px";
+	var password = document.getElementById("password");
+	var cpassword = document.getElementById("Cpassword");
+	var button = document.getElementById("submit");
+
+	if (password.value === "") {
+		return;
 	}
-	else
-	{
-		document.getElementById(id).style.visibility = "visible";
-		document.getElementById(id).style.height = "auto";
+	console.log("Password: " + password.value + ", Confirm Password" + cpassword.value);
+
+	if (password.value === cpassword.value) {
+		button.disabled = false;
+	} else if (password.value === "") {
+		button.disabled = true;
+	} else {
+		button.disabled = true;
 	}
 }

@@ -22,6 +22,11 @@ router.get('/', function (req, res, next) {
     res.render('signin', {title: 'Express'});
 });
 
+router.get('/signin', function (req, res, next) {
+    supUser  ='';
+    res.render('signin', {title: 'Express'});
+});
+
 router.post('/signin/login', function (req, res) {
 
     var cipher = crypto.createCipher(algorithm, key);
@@ -68,6 +73,10 @@ router.post('/signin/login', function (req, res) {
 
 
 router.get('/signin/registration', function (req, res, next) {
+    res.render('registration', {title: 'Wingz Registration'});
+});
+
+router.get('/registration', function (req, res, next) {
     res.render('registration', {title: 'Wingz Registration'});
 });
 
@@ -142,3 +151,4 @@ router.get('/signin/birdReporting', function (req, res, next) {
 });
 
 module.exports = router;
+
