@@ -18,6 +18,7 @@ var db = pgp(dbConfig);
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    supUser  ='';
     res.render('signin', {title: 'Express'});
 });
 
@@ -37,11 +38,18 @@ router.post('/signin/login', function (req, res) {
         ]);
     })
         .then(info => {
-            supUser = username;
-            res.render('birdfeed', {
-                my_title: "My Bird Feed",
-                username: supUser
-            })
+            if (info[0].exists === true) {
+                supUser = username;
+                res.render('birdfeed', {
+                    my_title: "My Bird Feed",
+                    username: supUser
+                })
+            } else {
+                res.render('signin', {
+                    title: "Sign In",
+                })
+            }
+
         })
         .catch(error => {
             res.render('signin', {
@@ -114,13 +122,15 @@ router.get('/signin/birdFacts', function (req, res, next) {
 router.get('/signin/birdFeed', function (req, res, next) {
     res.render('birdFeed', {
         title: 'Bird Feed',
-        username: supUser});
+        username: supUser
+    });
 });
 
 router.get('/signin/birdReporting', function (req, res, next) {
     res.render('birdReporting', {
         title: 'Bird Reporting',
-        username: supUser});
+        username: supUser
+    });
 });
 
 module.exports = router;
