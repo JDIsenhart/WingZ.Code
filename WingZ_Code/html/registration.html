@@ -28,6 +28,7 @@
             margin-top: 2%;
         }
     </style>
+    <script src="../resources/js/scripts.js"></script>
 </head>
 <body>
 
@@ -38,7 +39,7 @@
         features of this app please tell us who you are so you can join this awesome community of fellow bird watchers.
     </p>
     
-    <form action="home">
+    <form action="home" onkeyup = "confirmPSWD()">
 
         <div class="input-field">
             <label for="input-id">Name: </label>
@@ -90,7 +91,9 @@
 
         <br>
 
-        <input type="submit" value="Submit Registration" class="btn btn-primary btn-block">
+        <button disabled type="submit" value="Submit Registration" id = "submit" class="btn btn-primary btn-block">
+            Submit Registration
+        </button>
     </form>
 </body>
 </html>
