@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+
+	<div class="container">
+		<h2>Bird Report</h2>
+		<p>This is where you can report a bird you have seen. Have you seen a bird today?</p>
+
+		<form action="" method="post">
+
+			<div class="form-group">
+				<label for="report_date"><b>Report Date:</b></label>
+				<input type="text" class="form-control" name='report_date' id="report_date" placeholder="Today's Date">
+			</div>
+
+			<div class="form-group">
+				<label for="bird_loc"><b>Location:</b></label>
+				<input type="text" class="form-control" name="bird_loc" id="bird_loc" placeholder="Where did you see the bird?">
+			</div>
+
+			<p>If you are not sure what type of bird it is, check out our Bird Facts Page!</p>
+			<p>Link</p>
+
+			<label class="my-1 mr-2" for="bird_type"><b>Bird Type</b></label>
+  			<select class="custom-select my-1 mr-sm-2" name="bird_type" id="bird_type">
+    			<option selected value="Hawk">Hawk</option>
+    			<option value="Eagle">Eagle</option>
+    			<option value="Owl">Owl</option>
+    			<option value="Pigeon">Pigeon</option>
+    			<option value="Goose">Goose</option>
+    			<option value="Penguin">Penguin</option>
+    			<option value="Other">Other</option>
+  			</select>
+
+			<div class="form-group">
+				<label for="bird_color"><b>Bird Color:</b></label>
+				<input type="text" class="form-control" name="bird_color" id="bird_color" placeholder="What color is the bird?">
+			</div>
+
+			<label class="my-1 mr-2" for="bird_status"><b>Bird Status</b></label>
+  			<select class="custom-select my-1 mr-sm-2" name="bird_status" id="bird_status">
+    			<option selected value="Flying">Flying</option>
+    			<option value="Walking">Walking</option>
+    			<option value="Sitting">Sitting</option>
+    			<option value="In Water">In Water</option>
+    			<option value="Other">Other</option>
+  			</select>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>

@@ -1,4 +1,4 @@
-
+function logInAndOut(id, toggle)
 
 function viewStudentStats(id, toggle)
 {

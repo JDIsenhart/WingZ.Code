@@ -1,0 +1,50 @@
+<% include ../partials/header %>
+<% include ../partials/menu %>
+
+<div class="card-body mx-auto">
+	<form class="form" action="/bird_facts/bird_info" method="get">
+		<select class="custom-select" name="fact_choice" onchange="this.form.submit()">
+			<option selected>Select Bird</option>
+			<% if(birds) {
+				var bird_options = '';
+				birds.forEach(function(item){
+					bird_options += '<option value="' + item.type + '">' + item.type  +'</option>'; 
+				}); %>
+				<%- bird_options %>
+			<% } %>
+		</select>
+	</form>
+</div>
+
+<div class="col-8">
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<th>Type</th>
+				<td>
+					<% if(bird_info) { %>
+						<%- bird_info.type %>
+					<% } %>
+				</td>
+			</tr>
+			<tr>
+				<th>Image</th>
+				<td>
+					<% if(bird_info) { %>
+						<img class="card-img-top" id="bird_img" src="<%- bird_info.image %>" alt="BIRD IMAGE">
+					<% } %>
+				</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>
+					<% if(bird_info) { %>
+						<%- bird_info.description %>
+					<% } %>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<% include ../partials/footer %>

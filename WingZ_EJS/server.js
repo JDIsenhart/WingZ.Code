@@ -10,9 +10,6 @@ var app = express();
 var bodyParser = require('body-parser'); //Ensure our body-parser tool has been added
 app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-const router = express.Router();
-
-
 
 //Create Database Connection
 var pgp = require('pg-promise')();
@@ -36,55 +33,124 @@ const dbConfig = {
 var db = pgp(dbConfig);
 
 // set the view engine to ejs
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 app.get('/',function(req,res) {
-  res.render('login', {
-    local_css:"signin.css",
-    my_title: "Login Page"
+  res.render('pages/home_page', {
+    local_css: "my_style.css",
+    my_title: "Home Page"
   });
 });
 
+app.get('/login', function(req,res) {
+  res.render('pages/login', {
+    local_css: "signin.css",
+    my_title: "Login Page"
+  })
+})
+
 app.get('/create_account', function(req,res) {
-  res.render('create_account', {
+  res.render('pages/create_account', {
     local_css: "createaccount.css",
     my_title: "Create Account"
   });
 });
 
-/*
-app.get('/bird_posting', function(req, res) {
-    res.sendFile(path.join(__dirname + '/BirdReporting.html'));
-});
-*/
+app.post('/create_account', function(req, res) {
+  var name = req.body.person_name;
+  var separate = name.indexOf(" ");
+  var first_name = name.substr(0, separate);
+  var last_name = name.substr(separate);
+  console.log(name);
+  var email = req.body.person_email;
+  var number = req.body.person_number;
+  var fav = req.body.fav_bird;
+  var pass = req.body.password;
+
+  console.log(first_name);
+  console.log(last_name);
+
+  var insert_statement = "INSERT INTO accounts(first_name, last_name, phone_number, fav_bird, password, id)" +
+                            "VALUES('" + first_name + "','" + last_name + "','" + number + "','" + fav + "','" 
+                            + pass + "','" + 1 + "') ON CONFLICT DO NOTHING;";
+
+  db.any(insert_statement)
+    .then(function(rows){
+      res.render('pages/home_page', {
+        my_title: "Home Page"
+      })
+    })
+})
 
 app.get('/bird_posting', function(req,res) {
-  res.render('BirdReporting.html', {
-    my_title: "Registration Page"
-  });
+  
+      res.render('pages/bird_posting', {
+        my_title: "Registration Page",
+      })
+});
+
+app.post('/bird_posting', function(req, res) {
+  
+  var r_date = req.body.report_date;
+  var loc = req.body.bird_loc;
+  var b_type = req.body.bird_type;
+  var b_color = req.body.bird_color;
+  var b_status = req.body.bird_status;
+
+  var insert_statement = "INSERT INTO bird_report(report_date, location, bird_type, bird_color, bird_status) VALUES('" + r_date + "','" + loc + 
+        "','" + b_type + "','" + b_color + "','" + b_status + "') ON CONFLICT DO NOTHING;";
+
+  db.any(insert_statement)
+    .then(function(rows){
+      res.render('pages/bird_posting',{
+        my_title: "Registration Page"
+      })
+    })
 });
 
 app.get('/bird_facts', function(req,res) {
-  /*
-  var bird_info = 'select * from bird_facts;';
-  db.any(bird_info)
-    .then(function(rows) {
-      res.render('/bird_facts', {
+  var query = 'select type from bird_facts;';
+  db.any(query)
+    .then(function (rows) {
+      res.render('pages/bird_facts',{
         my_title: "Bird Facts",
-        data: rows
+        birds: rows,
+        bird_info: '',
       })
     })
-  */
-  res.render('bird_facts', {
-    my_title: "Bird Facts"
-  });
+    .catch(function(err) {
+      request.flash('error', err);
+      response.render('pages/bird_facts', {
+        title: 'Bird Facts',
+        birds: ''
+      })
+    })
+});
+
+app.get('/bird_facts/bird_info', function(req, res) {
+
+  var userchoice = req.query.fact_choice;
+
+  var chosen_bird = "select * from bird_facts where type ='" + userchoice + "';";
+  var query = 'select type from bird_facts;';
+
+
+  db.task('get-everything', task => {
+    return task.batch([
+      task.any(query),
+      task.any(chosen_bird)
+    ]);
+  })
+  .then(info => {
+    res.render('pages/bird_facts',{
+      my_title: "Bird Facts",
+      birds: info[0],
+      bird_info: info[1][0]
+    })
+  })
 });
 
 
-
-
-
-
-app.listen(3200);
-console.log('3200 is the magic port');
+app.listen(3000);
+console.log('3000 is the magic port');
