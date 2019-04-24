@@ -38,7 +38,15 @@ router.post('/signin/login', function (req, res) {
         ]);
     })
         .then(info => {
+            console.log(info);
+            console.log(info[0][0].exists);
             if (info[0].exists === true) {
+                supUser = username;
+                res.render('birdfeed', {
+                    my_title: "My Bird Feed",
+                    username: supUser
+                })
+            } else if (info[0][0].exists === true) {
                 supUser = username;
                 res.render('birdfeed', {
                     my_title: "My Bird Feed",
@@ -59,7 +67,7 @@ router.post('/signin/login', function (req, res) {
 });
 
 
-router.get('/registration', function (req, res, next) {
+router.get('/signin/registration', function (req, res, next) {
     res.render('registration', {title: 'Wingz Registration'});
 });
 
