@@ -8,6 +8,10 @@ app.get('/',function(req,res){
   //__dirname : It will resolve to your project folder.
 });
 
+app.get('/login',function(req,res){
+  res.sendFile(path.join(__dirname+'/html/signin_page.html'));
+});
+
 app.get('/registration',function(req,res){
   res.sendFile(path.join(__dirname+'/html/registration.html'));
 });
