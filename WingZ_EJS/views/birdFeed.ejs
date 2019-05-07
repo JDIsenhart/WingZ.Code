@@ -1,34 +1,39 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body{
+        body {
             background: #CCCCFF;
             color: #404080;
             font-family: Athelas;
         }
-        .container{
+
+        .container {
             max-width: 50%;
             background: whitesmoke;
 
         }
-        ul{
+
+        ul {
             background-color: #404080;
         }
 
-        .navbar{
+        .navbar {
             background: #404080;
         }
-        li a{
+
+        li a {
             color: whitesmoke;
         }
 
-        li a:hover{
+        li a:hover {
             color: #CCCCFF;
             text-decoration: underline;
 
         }
-        .jumbotron button{
+
+        .jumbotron button {
             height: 50px;
             width: 160px;
             padding: 5px;
@@ -39,7 +44,8 @@
             border-width: 1.5px;
 
         }
-        #Fatcs{
+
+        #Fatcs {
             width: 130px;
         }
 
@@ -49,25 +55,19 @@
             justify-content: space-around;
 
         }
-        .jumbotron h2{
+
+        .jumbotron h2 {
             margin-left: 3%;
 
         }
 
     </style>
 
-    <script src="../resources/js/scripts.js">
-    </script>
-</head>
-<body>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="home">
-        <img class="rounded-circle" src="../resources/img/alot_of_birds.jpg" alt="" width="30" height="30">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -84,50 +84,50 @@
         </ul>
         <div class="form-inline my-2 my-lg-0">
             <a class="nav-link" href="">
-                <form action = "/signin" method = 'get'>
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout </button>
+                <form action="/signin" method='get'>
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
                 </form>
             </a>
         </div>
     </div>
 </nav>
 
-<div class = "jumbotron text-center">
-    <a href="facts"><button class="btn btn-outline-dark my-2 my-sm-0" id="Fatcs">Bird Facts</button></a>
-    <h2 class = "display-4">Bird Feed</h2>
-    <a href="report"><button class="btn btn-outline-dark my-2 my-sm-0" id="newReport">Report Bird</button></a>
+<div class="jumbotron text-center">
+    <a href="facts">
+        <button class="btn btn-outline-dark my-2 my-sm-0" id="Fatcs">Bird Facts</button>
+    </a>
+    <h2 class="display-4">Bird Feed</h2>
+    <a href="report">
+        <button class="btn btn-outline-dark my-2 my-sm-0" id="newReport">Report Bird</button>
+    </a>
 </div>
 
 
-    <div class = "container">
-        <div class = "text-left"><font size = "8">Bird: </font></div>
-        <div class = "text-left"><font size = "8">Seen By: </font></div>
-        <div class = "text-left"><font size = "8">Location: </font></div>
-    </div>
-<br>
 
-<div class = "container">
-    <div class = "text-left"><font size = "8"> Stacy saw an eagle near starbucks that you should go check out!</font></div>
-</div>
+<%
+    var card = "";
+    queryData.forEach(function(element){
+        console.log(element);
+        card += "<div class = \"text-left\">Bird: "+element.common_name+"<\div>";
+        card += "<div class = \"text-left\">Seen By: "+element.name+"<\div>";
+        card += "<div class = \"text-left\">Location: "+element.location+"<\div>";
+        card += "<br>"
+    });
+%>
+<div class="container" id="feed"><%- card%></div>
+<!--<?php $db = pg_connect("host=localhost port=5433 dbname=postgres user=postgres password=admin"); ?>-->
+<!--<?php $result = pg_query($db,"-->
+<!--SELECT * FROM birdsightings-->
+<!--INNER JOIN birds ON birdsightings.bird_id = birds.bird_id-->
+<!--INNER JOIN users ON birdsightings.username = users.username-->
+<!--ORDER BY sighting_number LIMIT 10"); ?>-->
+<!--<?php while($row=pg_fetch_assoc($result)){ ?>-->
+<!--<div class="container">-->
+<!--<div class="text-left"><font size="8">Bird: <?php $row['common_name'] ?></font></div>-->
+<!--<div class="text-left"><font size="8">Seen By: <?php $row['name] ?></font></div>-->
+<!--<div class="text-left"><font size="8">Location: <?php $row['location'] ?></font></div>-->
+<!--</div>-->
+<!--<br>-->
+<!--<?php } ?>-->
 
-<br>
-
-<div id="feed">
-</div>
-
-<div class = "container">
-    <div class = "text-left"><font size = "8"> Paul saw a blue jay near UMC! Go see if you can also spot it!</font>
-</div>
-
-    <!-- <?php
- $db = pg_connect("host=localhost port=5432 dbname=w3r user=w3r_admin password=admin123");
- $result = pg_query($db,"SELECT * FROM actor");
- echo "<table>";
- while($row=pg_fetch_assoc($result)){echo "<tr>";
- echo "<td align='center' width='200'>" . $row['actor_id'] . "</td>";
- echo "<td align='center' width='200'>" . $row['first_name'] . "</td>";
- echo "<td align='center' width='200'>" . $row['last_name'] . "</td>";
- echo "<td align='center' width='200'>" . $row['last_update'] . "</td>";
- echo "</tr>";}echo "</table>";?> -->
-
-</div>
+</body>

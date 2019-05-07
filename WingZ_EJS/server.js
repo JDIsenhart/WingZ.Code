@@ -48,7 +48,7 @@ app.get('/login', function(req,res) {
     local_css: "signin.css",
     my_title: "Login Page"
   })
-})
+});
 
 app.get('/create_account', function(req,res) {
   res.render('pages/create_account', {

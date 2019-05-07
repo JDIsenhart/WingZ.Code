@@ -36,26 +36,26 @@ router.post('/signin/login', function (req, res) {
     var password = cipher.update(tempPwd, 'utf8', 'hex');
     password += cipher.final('hex');
     var check_signin = 'SELECT EXISTS(SELECT 1 FROM userLogin where username = \'' + username + '\' AND password = \'' + password + '\');';
+    var getSightings = 'SELECT * FROM birdsightings INNER JOIN birds ON birdsightings.bird_id = birds.bird_id INNER JOIN users ON birdsightings.username = users.username ORDER BY sighting_number LIMIT 10;'
     console.log(check_signin)
     db.task('get-everything', task => {
         return task.batch([
-            task.query(check_signin)
+            task.query(check_signin),
+            task.query(getSightings)
         ]);
     })
         .then(info => {
-            console.log(info);
-            console.log(info[0][0].exists);
             if (info[0].exists === true) {
                 supUser = username;
                 res.render('birdfeed', {
                     my_title: "My Bird Feed",
-                    username: supUser
+                    queryData: info[1]
                 })
             } else if (info[0][0].exists === true) {
                 supUser = username;
                 res.render('birdfeed', {
                     my_title: "My Bird Feed",
-                    username: supUser
+                    queryData: info[1]
                 })
             } else {
                 res.render('signin', {
