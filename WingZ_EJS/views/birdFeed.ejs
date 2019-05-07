@@ -97,7 +97,7 @@
         <button class="btn btn-outline-dark my-2 my-sm-0" id="Fatcs">Bird Facts</button>
     </a>
     <h2 class="display-4">Bird Feed</h2>
-    <a href="report">
+    <a href="birdReporting">
         <button class="btn btn-outline-dark my-2 my-sm-0" id="newReport">Report Bird</button>
     </a>
 </div>
@@ -115,19 +115,5 @@
     });
 %>
 <div class="container" id="feed"><%- card%></div>
-<!--<?php $db = pg_connect("host=localhost port=5433 dbname=postgres user=postgres password=admin"); ?>-->
-<!--<?php $result = pg_query($db,"-->
-<!--SELECT * FROM birdsightings-->
-<!--INNER JOIN birds ON birdsightings.bird_id = birds.bird_id-->
-<!--INNER JOIN users ON birdsightings.username = users.username-->
-<!--ORDER BY sighting_number LIMIT 10"); ?>-->
-<!--<?php while($row=pg_fetch_assoc($result)){ ?>-->
-<!--<div class="container">-->
-<!--<div class="text-left"><font size="8">Bird: <?php $row['common_name'] ?></font></div>-->
-<!--<div class="text-left"><font size="8">Seen By: <?php $row['name] ?></font></div>-->
-<!--<div class="text-left"><font size="8">Location: <?php $row['location'] ?></font></div>-->
-<!--</div>-->
-<!--<br>-->
-<!--<?php } ?>-->
 
 </body>

@@ -62,16 +62,23 @@
     today?
 </blockquote>
 
-<form action="/signin/birdFeed">
+<form action="/signin/birdReporting" method="post">
     <h3 class="text-center">What Type of Bird is it?</h3>
     <p class="text-center">If you are not sure what type of bird it is, check out our Bird Facts Page!</p>
     <p class="text-center">Link</p>
     <div align="center">
-        <select name="cars">
-            <option value="NULL">Birds</option>
-            <option value="hawk">Hawk</option>
-            <option value="eagle">Eagle</option>
-            <option value="Other">Other</option>
+
+
+        <select name="birdSel">
+            <%
+            var card = "";
+            queryData.forEach(function(element){
+                console.log(element);
+                card += "<option value="+element.bird_id+">"+element.common_name+"</option>";
+                card += "<br>"
+            });
+            %>
+            <%- card%>
         </select>
     </div>
 
