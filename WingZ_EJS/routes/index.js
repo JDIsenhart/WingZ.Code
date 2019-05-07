@@ -130,10 +130,45 @@ router.post('/registration/signup', function (req, res) {
 });
 
 router.get('/signin/birdFacts', function (req, res, next) {
-    res.render('birdFacts', {
-        title: 'Bird Facts',
-        username: supUser
-    });
+    var get_bird_types = 'select common_name from birds;';
+    db.any(get_bird_types)
+        .then(function(rows){
+            res.render('birdFacts', {
+                title: "Bird Facts",
+                username: supUser,
+                birds: rows,
+                bird_info: ''
+            })
+        })
+        .catch(function (err) {
+            request.flash('error',err);
+            response.render('birdFacts', {
+                title: 'Bird Facts',
+                birds: '',
+                bird_info: ''
+            })
+        })
+});
+
+router.get('/signin/birdFacts/birdInfo', function(req,res,next){
+    var userchoice = req.query.fact_choice;
+    var chosen_bird = "select * from birds where common_name ='" + userchoice + "';";
+    var query = 'select common_name from birds;';
+
+
+    db.task('get-everything', task => {
+        return task.batch([
+            task.any(query),
+            task.any(chosen_bird)
+        ]);
+    })
+        .then(info => {
+            res.render('birdFacts',{
+                my_title: "Bird Facts",
+                birds: info[0],
+                bird_info: info[1][0]
+            })
+        });
 });
 
 router.get('/signin/birdFeed', function (req, res, next) {
