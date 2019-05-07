@@ -40,37 +40,43 @@
 
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="birdfeed.html">
-        <img class="rounded-circle" src="../resources/img/alot_of_birds.jpg" alt="" width="30" height="30">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="birdFeed">Feed</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="birdFacts">Bird Facts <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="birdReporting">Bird Reporting</a>
+                <a class="nav-link" href="../birdFeed">Feed</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../birdFacts">Bird Facts <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../birdReporting">Bird Reporting</a>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <form action = "/" method = 'get'>
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout </button>
-            </form>
+            <a class="nav-link" href="">
+                <form action="../signin" method='get'>
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+                </form>
+            </a>
         </div>
     </div>
 </nav>
 
 <div class="card-body mx-auto">
-    <form class="form">
+    <form class="form" action="/signin/birdFacts/birdInfo" method="get">
         <select class="custom-select" name="fact_choice" onchange="this.form.submit()">
             <option selected>Select Bird</option>
-            <option>Load in more Birds</option>
+            <% if(birds) {
+                var bird_options = '';
+                birds.forEach(function(item) {
+                    bird_options += '<option value="' + item.common_name + '">' + item.common_name  +'</option>';
+                });%>
+            <%-bird_options%>
+            <%}%>
         </select>
     </form>
 </div>
@@ -81,22 +87,29 @@
             <tr>
                 <th>Type</th>
                 <td>
-                    Load Bird Type Here
+                    <% if(bird_info) { %>
+                        <%- bird_info.common_name %>
+                    <% } %>
                 </td>
             </tr>
             <tr>
                 <th>Image</th>
                 <td>
-                    Load Bird Image Here
+                    <% if(bird_info) { %>
+                        <img class="card-img-top" id="bird_img" src="<%- bird_info.bird_image %>" alt="BIRD IMAGE">
+                    <% } %>
                 </td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-
+                    <% if(bird_info) { %>
+                        <%- bird_info.bird_description %>
+                    <% } %>
                 </td>
             </tr>
         </table>
     </div>
 </div>
+</body>
 </html>
