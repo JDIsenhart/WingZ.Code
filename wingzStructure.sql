@@ -77,7 +77,7 @@ CREATE TABLE usertexts (
 CREATE TABLE birds (
     bird_id serial PRIMARY KEY,
     common_name character varying(25) NOT NULL,
-    scientific_name character varying(60) NOT NULL,
+    scientific_name character varying(60),
     bird_description character varying(180),
     bird_image character varying(180)
 );
