@@ -9,7 +9,7 @@ How to build/run:
 Download and install PostgreSQL:
 
 In the flavor required for your OS, download and
-install the most current stable version of PostgreSQL. It's important to note for this program that postgreSQL is referenced on Port 5433, the default port for Windows environments. Your installation may require modification for this to work properly.
+install the most current stable version of PostgreSQL. It's important to note for this program that postgreSQL is referenced on Port 5433 default for Windows, Port 5432 is the default for mac so if it isn't letting you signin the index.js file contains the port to change. Your installation may require modification for this to work properly.
 
 Next, enter the psql terminal, and in the default DB (postgres), copy and paste the SQL from WingzStructure.sql into the terminal, creating the tables and structures required.
 Follow this with wingzData, prepopulating the database with appropriate data.
