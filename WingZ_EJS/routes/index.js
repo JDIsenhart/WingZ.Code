@@ -137,18 +137,80 @@ router.get('/signin/birdFacts', function (req, res, next) {
 });
 
 router.get('/signin/birdFeed', function (req, res, next) {
-    res.render('birdFeed', {
-        title: 'Bird Feed',
-        username: supUser
-    });
+    var getSightings = 'SELECT * FROM birdsightings INNER JOIN birds ON birdsightings.bird_id = birds.bird_id INNER JOIN users ON birdsightings.username = users.username ORDER BY sighting_number LIMIT 10;';
+    db.task('get-everything', task => {
+        return task.batch([
+            task.query(getSightings)
+        ]);
+    })
+        .then(info => {
+                res.render('birdfeed', {
+                    my_title: "My Bird Feed",
+                    queryData: info[0]
+                })
+        })
+        .catch(error => {
+            res.render('signin', {
+                title: "Sign In",
+            })
+        });
 });
 
 router.get('/signin/birdReporting', function (req, res, next) {
-    res.render('birdReporting', {
-        title: 'Bird Reporting',
-        username: supUser
-    });
+    var getBirds = 'SELECT bird_id, common_name from birds ORDER BY common_name;';
+    console.log(getBirds)
+    db.task('get-everything', task => {
+        return task.batch([
+            task.query(getBirds),
+        ]);
+    })
+        .then(info => {
+                console.log(info);
+                res.render('birdReporting', {
+                    title: "Bird Reporting",
+                    queryData: info[0]
+                })
+
+        })
+        .catch(error => {
+            res.render('signin', {
+                title: "Sign In",
+            })
+        });
 });
 
+router.post('/signin/birdReporting', function (req, res, next) {
+
+    var birdS = '\'' + req.body.birdSel + '\'';
+    var loc = '\'' + req.body.Location + '\'';
+    var user = '\'' + supUser + '\'';
+    var birdSight = 'insert into birdsightings(sighting_number, username, bird_id, location) values(DEFAULT, ' +
+        user + ', ' +
+        birdS + ', ' +
+        loc + ''+
+        ') ON CONFLICT DO NOTHING;';
+    var getSightings = 'SELECT * FROM birdsightings INNER JOIN birds ON birdsightings.bird_id = birds.bird_id INNER JOIN users ON birdsightings.username = users.username ORDER BY sighting_number DESC LIMIT 10;';
+
+    console.log(birdSight)
+    db.task('get-everything', task => {
+        return task.batch([
+            task.query(birdSight),
+            task.query(getSightings)
+        ]);
+    })
+        .then(info => {
+            console.log(info);
+            res.render('birdfeed', {
+                title: "Bird Reporting",
+                queryData: info[1]
+            })
+
+        })
+        .catch(error => {
+            res.render('birdReporting', {
+                title: "Error",
+            })
+        });
+});
 module.exports = router;
 
